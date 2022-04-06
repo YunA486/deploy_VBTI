@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>결과 페이지</h1>
+    <p>{{ vegetable.name }}</p>
+    <img src="{% static 'image/' %}{{ vegetable.pk }}.png">
+
+    {% if vegetable.name == "딸기" %}
+        <img src="{% static 'image/pepper.png' %}">
+        고추
+    {% elif vegetable.name == "당근"%}
+        <img src="{% static 'image/BeanSprouts.png' %}">
+        콩나물
+    {% elif vegetable.name == "감자"%}
+        <img src="{% static 'image/sweetPotato.png' %}">
+        고구마
+    {% elif vegetable.name == "오이"%}
+        <img src="{% static 'image/broccoli.png' %}">
+        브로콜리
+    {% elif vegetable.name == "무"%}
+        <img src="{% static 'image/napaCabbage.png' %}">
+        배추
+    {% elif vegetable.name == "파"%}
+        <img src="{% static 'image/bean.png' %}">
+        강낭콩
+    {% elif vegetable.name == "고구마"%}
+        <img src="{% static 'image/spinach.png' %}">
+        시금치
+    {% elif vegetable.name == "가지" %}
+        <img src="{% static 'image/pumpkin.png' %}">
+        호박
+    {% endif %}
+
+
+    {% if vegetable.name == "딸기" %}
+        <img src="{% static 'image/tomato.png' %}">
+        토마토
+    {% elif vegetable.name == "당근"%}
+        <img src="{% static 'image/sweetPotato.png' %}">
+        고구마
+    {% elif vegetable.name == "감자"%}
+        <img src="{% static 'image/lettuce.png' %}">
+        상추
+    {% elif vegetable.name == "오이"%}
+        <img src="{% static 'image/greenOnion.png' %}">
+        파
+    {% elif vegetable.name == "무"%}
+        <img src="{% static 'image/lettuce.png' %}">
+        상추
+    {% elif vegetable.name == "파"%}
+        <img src="{% static 'image/onion.png' %}">
+        양파
+    {% elif vegetable.name == "고구마"%}
+        <img src="{% static 'image/carrot.png' %}">
+        당근
+    {% elif vegetable.name == "가지" %}
+        <img src="{% static 'image/tomato.png' %}">
+        토마토
+    {% endif %}
+    <a href="/">메인화면</a>
+    <a href="/form">다시하기</a>
+</body>
+</html>

@@ -1,0 +1,293 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load mathfilters %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+
+<style>
+    .lastquestions {
+        accent-color: #6A9258;
+        width: 50px;
+        height: 50px;
+        vertical-align: middle;
+    }
+
+    .Rbtn label {
+        font-family: 'Noto Sans KR';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 41px;
+    }
+
+    input[type=radio]:checked+.lastlabel {
+        background-color: #FFFFFF;
+        color: black;
+    }
+
+    .Rbtn {
+        margin-bottom: 45px;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: translateY(0);
+        }
+
+        14% {
+            transform: translateY(-11%);
+        }
+
+        28% {
+            transform: translateY(-22%);
+        }
+
+        42% {
+            transform: translateY(-33%);
+        }
+
+        54% {
+            transform: translateY(-44%);
+        }
+
+        68% {
+            transform: translateY(-55%);
+        }
+
+        82% {
+            transform: translateY(-66%);
+        }
+
+        96% {
+            transform: translateY(-77%);
+        }
+
+        100% {
+            transform: translateY(-88%);
+        }
+    }
+
+    .type {
+        text-align: center;
+        overflow: hidden;
+        width: 440px;
+        height: 500px;
+        margin-left: 120px;
+        line-height: 5em;
+        height: 10em;
+    }
+
+    .type_list {
+        animation: rotate 10s infinite;
+    }
+</style>
+{% endblock head %}
+
+{% block body %}
+<section id="survey">
+    <div class="wrapper">
+        <form id="form" action="{% url 'main:submit' %}" method="post">
+            {% csrf_token %}
+            {% for question in questions %}
+            <div style=" display: flex; justify-content: center;">
+                <img src="{% static '/image/Main_bg.png' %}" style="position: absolute; z-index: -1;">
+            </div>
+            <div class="test">
+                <div class="question_container">
+                    <button class="prev_btn" type="button" onclick="scrollWin(0,-1080)">
+                        < BACK</button>
+                            <progress value='{{ question.number|mul:10 }}' max="110"></progress>
+                            <h3 class="question">{{ question.content }}</h3>
+                </div>
+                {% if question.number == 1 %}
+                <img src="{% static 'image/1_icon.png' %}">
+                {% elif question.number == 2 %}
+                <img src="{% static 'image/2_icon.png' %}">
+                {% elif question.number == 3 %}
+                <img src="{% static 'image/3_icon.png' %}">
+                {% elif question.number == 7 %}
+                <img src="{% static 'image/7_icon.png' %}">
+                {% elif question.number == 9 %}
+                <img src="{% static 'image/9_icon.png' %}">
+                {% elif question.number == 4 or question.number == 5 or question.number == 6 or question.number == 8 %}
+                <img src="{% static 'image/smallRec.png' %}">
+                {% endif %}
+                <div class="answer">
+                    {% for choice in question.choice_set.all %}
+                    <div class="btn">
+                        <input type="radio" class="rbtn" name="question-{{ question.number }}"
+                            id="choice-{{ choice.pk }}" value="{{ choice.vegetable.pk }}" onclick="scrollWin(0,1080)">
+                        <label for="choice-{{ choice.pk }}" class="btnla">
+                            {{ choice.content }}</label>
+                    </div>
+                    {% endfor %}
+                    <p class="option">Please choose on option</p>
+
+                    {% if forloop.last %}
+                    <div style=" display: flex; justify-content: center;">
+                        <img src="{% static '/image/Main_bg.png' %}"
+                            style="position: absolute; z-index: -1; margin-top: 120px;">
+                    </div>
+                    <div class="test" style="margin-top: 100px;">
+                        <div class="question_container">
+                            <button class="prev_btn" type="button" onclick="scrollWin(0,-1080)" name="chk_color">
+                                < BACK</button>
+                                    <progress value="100" max="110"></progress>
+                                    <h3 class="question">Q. 좋아하는 색을 골라주세요!</h3>
+                        </div>
+                        <div class="answer" style="margin-left: 120px; margin-top: 123px;">
+                            <div style="float: left;">
+                                <div class="Rbtn" style="margin-left: -22px;">
+                                    <input type="radio" onclick="scrollWin(0,1080)" name="chk_color"
+                                        class="lastquestions">
+                                    <label class="lastlabel">흰색</label>
+                                </div>
+                                <div class="Rbtn">
+                                    <input type="radio" onclick="scrollWin(0,1080)" name="chk_color"
+                                        class="lastquestions">
+                                    <label class="lastlabel">빨간색</label>
+                                </div>
+                                <div class="Rbtn">
+                                    <input type="radio" onclick="scrollWin(0,1080)" name="chk_color"
+                                        class="lastquestions">
+                                    <label class="lastlabel">주황색</label>
+                                </div>
+                                <div class="Rbtn">
+                                    <input type="radio" onclick="scrollWin(0,1080)" name="chk_color"
+                                        class="lastquestions">
+                                    <label class="lastlabel">노란색</label>
+                                </div>
+                            </div>
+                            <div style="font-size: 28px;">
+                                <div class="Rbtn">
+                                    <input type="radio" onclick="scrollWin(0,1080)" name="chk_color"
+                                        class="lastquestions">
+                                    <label class="lastlabel">초록색</label>
+                                </div>
+                                <div class="Rbtn">
+                                    <input type="radio" onclick="scrollWin(0,1080)" name="chk_color"
+                                        class="lastquestions">
+                                    <label class="lastlabel">보라색</label>
+                                </div>
+                                <div class="Rbtn" style="margin-right: 20px;">
+                                    <input type="radio" onclick="scrollWin(0,1080)" name="chk_color"
+                                        class="lastquestions">
+                                    <label class="lastlabel">기타</label>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="option" style="margin-top: 220px;">Please choose on option</p>
+                    </div>
+
+                    <div style=" display: flex; justify-content: center;">
+                        <img src="{% static '/image/Main_bg.png' %}"
+                            style="position: absolute; z-index: -1; margin-top: 20px;">
+                    </div>
+                    <div class="test">
+                        <div class="question_container">
+                            <button class="prev_btn" type="button" onclick="scrollWin(0,-1080)" name="chk_color"
+                                class="lastquestions">
+                                < BACK</button>
+                                    <progress value="110" max="110"></progress>
+                                    <h3 class="question">Q.MBTI를 선택해 주세요!</h3>
+                        </div>
+                        <div class="answer" style="margin-left: 40px; margin-top: 154px;">
+                            <div style="float: left; margin-right: 120px;">
+                                <div class="Rbtn">
+                                    <input type="radio" name="EI" class="lastquestions">
+                                    <label class="lastlabel">E</label>
+                                </div>
+                                <div class="Rbtn">
+                                    <input type="radio" name="NS" class="lastquestions">
+                                    <label class="lastlabel">N</label>
+                                </div>
+                                <div class="Rbtn">
+                                    <input type="radio" name="FT" class="lastquestions">
+                                    <label class="lastlabel">F</label>
+                                </div>
+                                <div class="Rbtn">
+                                    <input type="radio" onclick="scrollWin(0,1080)" name="PJ" class="lastquestions">
+                                    <label class="lastlabel">P</label>
+                                </div>
+                            </div>
+                            <div style="float: left; margin-right: 50px;">
+                                <div class="Rbtn">
+                                    <input type="radio" name="EI" class="lastquestions">
+                                    <label class="lastlabel">I</label>
+                                </div>
+                                <div class="Rbtn">
+                                    <input type="radio" name="NS" class="lastquestions">
+                                    <label class="lastlabel">S</label>
+                                </div>
+                                <div class="Rbtn">
+                                    <input type="radio" name="FT" class="lastquestions">
+                                    <label class="lastlabel">T</label>
+                                </div>
+                                <div class="Rbtn">
+                                    <input type="radio" onclick="scrollWin(0,1080)" name="PJ" class="lastquestions">
+                                    <label class="lastlabel">J</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="Rbtn">
+                                    <input type="radio" onclick="scrollWin(0,1080)" class="lastquestions">
+                                    <label class="lastlabel">잘 모르겠어요!</label>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="option" style="margin-top: 430px;">Please choose on option</p>
+                    </div>
+
+                    <div style=" display: flex; justify-content: center;">
+                        <img src="{% static '/image/Main_bg.png' %}"
+                            style="position: absolute; z-index: -1; margin-top: 20px;">
+                    </div>
+                    <div class="test">
+                        <div class="question_container">
+                            <button class="prev_btn" type="button" onclick="scrollWin(0,-1080)" name="chk_color">
+                                < BACK</button>
+                                    <progress value="110" max="110"></progress>
+                                    <h3 class="question">과연...<br>나와 잘 맞는 채소는??</h3>
+                        </div>
+                        <div class="type">
+                            <ul class="type_list" style="list-style: none; margin-top: -110px;">
+                                <li><img src="{% static '/image/veg_1.png' %}" style="width: 300px; height: 300px;">
+                                </li>
+                                <li><img src="{% static '/image/veg_2.png' %}" style="width: 300px; height: 300px;">
+                                </li>
+                                <li><img src="{% static '/image/veg_3.png' %}" style="width: 300px; height: 300px;">
+                                </li>
+                                <li><img src="{% static '/image/veg_4.png' %}" style="width: 300px; height: 300px;">
+                                </li>
+                                <li><img src="{% static '/image/veg_5.png' %}" style="width: 300px; height: 300px;">
+                                </li>
+                                <li><img src="{% static '/image/veg_6.png' %}" style="width: 300px; height: 300px;">
+                                </li>
+                                <li><img src="{% static '/image/veg_7.png' %}" style="width: 300px; height: 300px;">
+                                </li>
+                                <li><img src="{% static '/image/veg_8.png' %}" style="width: 300px; height: 300px;">
+                                </li>
+                                <li><img src="{% static '/image/veg_1.png' %}" style="width: 300px; height: 300px;">
+                                </li>
+                            </ul>
+                        </div>
+                        <input type="submit" value="결과 보러 가기" id="result">
+                    </div>
+
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </form>
+    </div>
+</section>
+{% endblock body %}
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="{% static 'js/form.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="{% static '/js/form.js' %}"></script>
+{% endblock js %}

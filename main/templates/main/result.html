@@ -1,0 +1,174 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block head %}
+
+    <meta property="og:title" content="NAVER">
+    <meta property="og:url" content="https://www.naver.com/">
+    <!-- 서버 만들어서 넣기 -->
+    <meta property="og:description" content="내용">
+    <meta property="og:image" content="이미지 경로">
+
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/result.css' %}">
+{% endblock head %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
+</style>
+
+<script>
+    $(document).ready(function() {
+        $('#loading').hide();
+    });
+    function onSubmit(){
+        $('#loading').show();
+        document.testform.submit();
+        return true;
+    }
+</script>
+
+{% block body %}
+
+    <img src="{% static 'image/' %}{{ vegetable.pk }}.png">
+    <section id="main_contents">
+        <div class="wrapper">
+            <div class="result">
+                {% if vegetable.name == "딸기" %}
+                    <p><span>'{{ vegetable.name }}' </span>{{ vegetable.data.title }}</p>
+                {% elif vegetable.name == "당근"%}
+                    <p style="color: #DA8E5B;"><span>'{{ vegetable.name }}' </span>{{ vegetable.data.title }}</p>
+                {% elif vegetable.name == "감자"%}
+                    <p style="color: #DBC68F;"><span>'{{ vegetable.name }}' </span>{{ vegetable.data.title }}</p>
+                {% elif vegetable.name == "오이"%}
+                    <p style="color: #467E57;"><span>'{{ vegetable.name }}' </span>{{ vegetable.data.title }}</p>
+                {% elif vegetable.name == "무"%}
+                    <p style="color: #467E57;"><span>'{{ vegetable.name }}' </span>{{ vegetable.data.title }}</p>
+                {% elif vegetable.name == "파"%}
+                    <p style="color: #467E57;"><span>'{{ vegetable.name }}' </span>{{ vegetable.data.title }}</p>
+                {% elif vegetable.name == "고구마"%}
+                    <p style="color: #8C5991;"><span>'{{ vegetable.name }}' </span>{{ vegetable.data.title }}</p>
+                {% elif vegetable.name == "가지" %}
+                    <p style="color: #8C5991;"><span>'{{ vegetable.name }}' </span>{{ vegetable.data.title }}</p>
+                {% endif %}
+            </div>
+            <div class="result_explains">
+                <ul>
+                    {% for feature in vegetable.data.features %}
+                        <li>
+                            <img src="{% static 'image/star.png' %}"/>&nbsp&nbsp{{ feature }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="ranking">
+                <div class="secondranking">
+                    {% if vegetable.name == "딸기" %}
+                        <p class="firstp" style="margin-top: 15px;">2위</p>
+                        <img src="{% static 'image/pepper.png' %}">
+                        <p class="secondp">고추</p>
+                    {% elif vegetable.name == "당근"%}
+                        <p class="firstp" style="margin-top: 67px;">2위</p>
+                        <img src="{% static 'image/BeanSprouts.png' %}">
+                        <p class="secondp">콩나물</p>
+                    {% elif vegetable.name == "감자"%}
+                        <p class="firstp" style="margin-top: 17px;">2위</p>
+                        <img src="{% static 'image/sweetPotato.png' %}">
+                        <p class="secondp">고구마</p>
+                    {% elif vegetable.name == "오이"%}
+                        <p class="firstp" style="margin-top: 57px;">2위</p>
+                        <img src="{% static 'image/broccoli.png' %}">
+                        <p class="secondp">브로콜리</p>
+                    {% elif vegetable.name == "무"%}
+                        <p class="firstp" style="margin-top: 27px;">2위</p>
+                        <img src="{% static 'image/napaCabbage.png' %}">
+                        <p class="secondp">배추</p>
+                    {% elif vegetable.name == "파"%}
+                        <p class="firstp" style="margin-top: 25px;">2위</p>
+                        <img src="{% static 'image/bean.png' %}">
+                        <p class="secondp">강낭콩</p>
+                    {% elif vegetable.name == "고구마"%}
+                        <p class="firstp">2위</p>
+                        <img src="{% static 'image/spinach.png' %}">
+                        <p class="secondp">시금치</p>
+                    {% elif vegetable.name == "가지" %}
+                        <p class="firstp" style="margin-top: 57px;">2위</p>
+                        <img src="{% static 'image/pumpkin.png' %}">
+                        <p class="secondp">호박</p>
+                    {% endif %}
+                </div>
+                <div class="thirdranking">
+                    {% if vegetable.name == "딸기" %}
+                    <p class="thirdp" style="margin-top: 17px;">3위</p>
+                        <img src="{% static 'image/tomato.png' %}">
+                        <p class="fourthp">토마토</p>
+                    {% elif vegetable.name == "당근"%}
+                    <p class="thirdp" style="margin-top: 65px;">3위</p>
+                        <img src="{% static 'image/sweetPotato.png' %}">
+                        <p class="fourthp">고구마</p>
+                    {% elif vegetable.name == "감자"%}
+                    <p class="thirdp" style="margin-top: 20px;">3위</p>
+                        <img src="{% static 'image/lettuce.png' %}">
+                        <p class="fourthp">상추</p>
+                    {% elif vegetable.name == "오이"%}
+                    <p class="thirdp" style="margin-top: 60px;">3위</p>
+                        <img src="{% static 'image/greenOnion.png' %}">
+                        <p class="fourthp">파</p>
+                    {% elif vegetable.name == "무"%}
+                    <p class="thirdp" style="margin-top: 30px;">3위</p>
+                        <img src="{% static 'image/lettuce.png' %}">
+                        <p class="fourthp">상추</p>
+                    {% elif vegetable.name == "파"%}
+                    <p class="thirdp" style="margin-top: 25px;">3위</p>
+                        <img src="{% static 'image/onion.png' %}">
+                        <p class="fourthp">양파</p>
+                    {% elif vegetable.name == "고구마"%}
+                    <p class="thirdp" style="margin-top: 25px;">3위</p>
+                        <img src="{% static 'image/carrot.png' %}">
+                        <p class="fourthp">당근</p>
+                    {% elif vegetable.name == "가지" %}
+                    <p class="thirdp" style="margin-top: 57px;">3위</p>
+                        <img src="{% static 'image/tomato.png' %}">
+                        <p class="fourthp">토마토</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="buttons">
+                <ul>
+                    <li>
+                        <a href="{% url 'main:index' %}">
+                            <img src="{% static '/image/restart.png' %}" class="homeimg">
+                            <button type="button" class="button">
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp홈으로 돌아가기
+                            </button>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="url">
+                            <img src="{% static '/image/copy.png' %}" class="copyimg">
+                            <button type="button" class="copy_btn" onclick="clip(); return false;">
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp링크 복사하기
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="share">
+                <p>친구들과 공유해 보세요!</p>
+                <div class="share_buttons">
+                        <img src="{% static '/image/share_facebook.png' %}"/>
+                        <button class="facebook_share" onclick="sharing();">Facebook</button>
+                        <hr class="vertical">
+                        <img src="{% static '/image/share_kakao.png' %}"/>
+                        <button class="insta_share">Kakao Talk</button>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}
+
+{% block js %}
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="{% static 'js/result.js' %}"></script>
+    
+{% endblock js %}

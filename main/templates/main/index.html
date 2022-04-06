@@ -1,0 +1,69 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock head %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
+</style>
+
+{% block body %}
+    <img src="{% static '/image/Main_bg.png' %}">
+    <section id="main_contents">
+        <div class="wrapper">
+            <div class="title">
+                <p class="main_title">VBTI</p>
+                <hr class="hor">
+            </div>
+            <div class="intro">
+                <h1>나와 가장 어울리는 채소는?</h1>
+                <div class="type">
+                    <ul class="type_list">
+                        <li>딸기</li>
+                        <li>당근</li>
+                        <li>감자</li>
+                        <li>오이</li>
+                        <li>무</li>
+                        <li>파</li>
+                        <li>고구마</li>
+                        <li>가지</li>
+                        <li>딸기</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="result_data">
+                <div class="data_wrap">
+                    <h3><span>&nbsp참여자 수&nbsp</span></h3>
+                    <p class="counter">{{ cnt }}</p>
+                    <!-- 초기화하기 : python manage.py loaddata data.json -->
+                </div>
+            </div>
+            
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="jquery.counterup.min.js"></script>
+            <div class="button">
+                <a href="{% url 'main:form' %}">
+                    <button class="start" type="button">나와 어울리는 채소 확인하기</button>
+                </a>
+            </div>
+            <p class="option">Please choose on option</p>
+        </div>
+    </section>
+{% endblock body %}
+
+{% block js %}
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+{% endblock js %}

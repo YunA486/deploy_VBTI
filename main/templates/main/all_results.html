@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all_results.css' %}">
+    <title>나의 채소 유형찾기</title>
+{% endblock head %}
+
+
+{% block body %}
+    <section id="main_contents">
+        <div class="wrapper">
+            <h1>VBTI</h1>
+            <div class="mbit">
+                <div class="frontend">
+                    <a href="/result/1"><img src="{% static 'image/veg_1.png' %}" alt="딸기"></a>
+                </div>
+                <div class="backend">
+                    <a href="/result/2"><img src="{% static 'image/veg_2.png' %}" alt="당근"></a>  
+                </div>
+                <div class="security">
+                    <a href="/result/3"><img src="{% static 'image/veg_3.png' %}" alt="감자"></a>
+                </div>
+                <div class="game">
+                    <a href="/result/4"><img src="{% static 'image/veg_4.png' %}" alt="오이"></a>
+                </div>
+                <div class="data">
+                    <a href="/result/5"><img src="{% static 'image/veg_5.png' %}" alt="무"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}

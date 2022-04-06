@@ -1,0 +1,117 @@
+{% load mathfilters %}
+{% load static %}
+
+<!-- 원본 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+.rbtn{
+    /* 라디오 버튼 숨김 */
+    opacity: 0;
+}
+label{
+    width: 700px;
+    height: 100px;
+    display:inline-block;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 100px;
+    border: 1px solid blue;
+}
+/* 라디오 체크 됐을 때 표시 */
+input[type=radio]:checked + label{
+    background: blueviolet;
+    color: aliceblue;
+}
+p{
+    margin: 0%;
+    margin-top: 30px;
+}
+</style>
+<!-- <script>
+    
+    if (question.number = 1){ 
+        document.write("<p>a의 값은 100 입니다.<p> ");
+    }
+    // 스크립트로 10번 11번 형태 변경 해보기..
+
+</script> -->
+<body>
+    <form action="/result/" method='post'>
+
+        <!-- 해커가 세션을 탈출하는 것을 방지하기 위해
+            for문이 있으면 적어줘야 됨 -->
+        {% csrf_token %}
+        {% for question in questions %}
+            <progress value="{{ question.number|mul:10}}" max="110"></progress>
+            <h3>{{ question.content }}</h3>
+            {% if question.number == 1 %}
+                <img src="{% static 'image/1_icon.png' %}">
+            {% elif question.number == 2 %}
+                <img src="{% static 'image/2_icon.png' %}">
+            {% elif question.number == 3 %}
+                <img src="{% static 'image/3_icon.png' %}">
+            {% elif question.number == 7 %}
+                <img src="{% static 'image/7_icon.png' %}">
+            {% elif question.number == 9 %}
+                <img src="{% static 'image/9_icon.png' %}">
+            {% else %}
+                <img src="{% static 'image/whiteRec.png' %}">
+            {% endif %}
+            {% for choice in question.choice_set.all %}
+                <div class="btn">
+                    <input type="radio"
+                           class = "rbtn"
+                           name="question-{{ question.number }}" 
+                           id="choice-{{ choice.pk }}" 
+                           value="{{ choice.vegetable.pk }}">
+                    <label for="choice-{{ choice.pk }}">
+                        {{ choice.content }}</label>
+                </div>
+            {% endfor %}
+            <p>Please choose on option</p>
+        <hr>
+        {% endfor %}
+        <input type="submit" value="제출하기">
+    </form>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/result/" method='post'>
+        {% csrf_token %}
+        {% for question in questions %}
+            <h3>Q. {{ question.content }}</h3>
+            {% for choice in question.choice_set.all %}
+                <div>
+                    <button 
+                        name="question-{{ question.number }}"
+                        id="choice-{{ choice.pk }}" 
+                        value="{{ choice.vegetable.pk }}">
+                            {{ choice.content }}
+                    </button>
+                    <label for="choice-{{ choice.pk }}"></label>
+                </div>
+            {% endfor %}
+        <hr>
+        {% endfor %}
+        <input type="submit" value="제출하기">
+    </form>
+</body>
+</html> -->
