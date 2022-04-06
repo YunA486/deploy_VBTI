@@ -27,7 +27,7 @@ import dj_database_url
 #         error_msg = f"Set the {setting} enviroment variable" 
 #         raise ImproperlyConfigured(error_msg) 
     
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-^p*e!+0ny02cox1i_cxmdp6-*^up9^gi0262ouiec658mg)i=b')
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +38,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-^p*e!+0ny02cox1i_cxmdp6-*^up9^gi0262ouiec658mg)i=b')
 # # SECRET_KEY = 'django-insecure-^p*e!+0ny02cox1i_cxmdp6-*^up9^gi0262ouiec658mg)i=b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
