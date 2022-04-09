@@ -1,0 +1,250 @@
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#main_contents {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+#main_contents .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 857px;
+}
+
+.result p {
+    color: #D6736F;
+    font-size: 48px;
+    margin: 0%;
+}
+
+.result span {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+}
+
+.result_explains {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    position: absolute;
+    top: 1119px;
+    width: 629px;
+}
+
+.result_explains ul {
+    color: #191919;
+    font-size: 28px;
+    width: auto;
+    list-style-position: outside;
+}
+
+.result_explains li {
+    line-height: 1.5;
+    padding-bottom: 50px;
+    padding-left: 30px;
+}
+
+.ranking {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 1772px;
+    /* margin-right: 10px;  */
+}
+
+.secondranking {
+    width: 330px;
+    height: 500px;
+    margin-right: 54px;
+    text-align: center;
+    margin-left: 15px;
+}
+
+.firstp {
+    color: #191919;
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.secondranking img {
+    margin-top: 20px;
+}
+
+.secondp {
+    color: #191919;
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    margin-top: 7px;
+}
+
+.thirdranking {
+    width: 330px;
+    height: 500px;
+    text-align: center;
+}
+
+.thirdp {
+    color: #191919;
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.thirdranking img {
+    margin-top: 20px;
+}
+
+.fourthp {
+    color: #191919;
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    margin-top: 7px;
+}
+
+.buttons li {
+    text-align: center;
+    align-items: center;
+}
+
+.buttons {
+    position: absolute;
+    top: 2372px;
+    margin-left: 20px;
+}
+
+.button {
+    width: 714px;
+    height: 90px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #467E57;
+
+    color: #FFFFFF;
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 43px;
+}
+
+.homeimg {
+    margin-right: 15px;
+    position: absolute;
+    left: 235px;
+    top: 31px;
+}
+
+.copy_btn {
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 43px;
+    width: 714px;
+    height: 90px;
+    border-radius: 10px;
+    border: solid 1px #467E57;
+    background-color: #FCFBE8;
+    color: #467E57;
+}
+
+.copyimg {
+    margin-right: 15px;
+    position: absolute;
+    left: 255px;
+    margin-top: 30px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.share {
+    position: absolute;
+    top: 2692px;
+    margin-left: 50px;
+}
+
+.share p {
+    margin-top: 80px;
+    color: #191919;
+    font-size: 20px;
+    text-align: center;
+}
+
+.share_buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+.share_buttons img {
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+}
+
+.facebook_share {
+    margin-right: 70px;
+}
+
+.facebook_share {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: #467E57;
+    font-size: 24px;
+}
+
+.kakao_share {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: #467E57;
+    font-size: 24px;
+}
+
+.vertical {
+    width: 2px;
+    height: 42px;
+    margin-right: 75px;
+    background-color: #E3E2CB;
+    border: none;
+}
+
+.buttons button {
+    margin-bottom: 30px;
+}
