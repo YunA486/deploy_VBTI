@@ -1,57 +1,66 @@
-function clip() {
+    
 
-	var url = '';
-	var textarea = document.createElement("textarea");
-	document.body.appendChild(textarea);
-	url = window.document.location.href;
-	textarea.value = url;
-	textarea.select();
-	document.execCommand("copy");
-	document.body.removeChild(textarea);
-	alert("URL이 복사되었습니다.")
-}
+    function clip() {
 
-function sharing() {
-	window.open('http://www.facebook.com/sharer/sharer.php?u=https://vbti.herokuapp.com/result/<int:vegetable_id>');
-	// 서버 만들어서 u= 다음부터 넣기
-}
+        var url = '';
+        var textarea = document.createElement("textarea");
+        document.body.appendChild(textarea);
+        url = window.document.location.href;
+        textarea.value = url;
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        alert("URL이 복사되었습니다.")
+    }
 
-import Kakao from '@/common/plugins/kakao.min'
+    function sharing() {
+        window.open('http://www.facebook.com/sharer/sharer.php?u=https://vbti.herokuapp.com');
+    }
 
-// SDK init
-if (!Kakao.isInitialized()) {
-	Kakao.init('38b66d063cf7a54f727a919e785ee441')
-}
+    /////// 카카오 공유 코드 ////////
 
-// createDefaultButton 함수 호출
-Kakao.Link.createDefaultButton({
-	container: '.kakao_share',
-	objectType: 'commerce',
-	content: {
-		   title: param.title,
-		   imageUrl,
-		   imageWidth,
-		   imageHeight,
-		   link: {
-			 mobileWebUrl: param.shareUrl,
-			 webUrl: param.shareUrl
-		   }
-	 },
-	 commerce: {
-		   regularPrice: param.regularPrice,
-		   discountPrice: param.discountPrice,
-		   discountRate: param.discountRate
-	 },
-	 buttons: [
-		   {
-			 title: '구매하기',
-			 link: {
-			   mobileWebUrl: param.shareUrl,
-			   webUrl: param.shareUrl
-			 }
-		   }
-	 ]
-})
+    const kakaoShare = document.querySelector('.kakao_share');
+    Kakao.init('9ef5fd5191a3ac8e7b7aa5f50f401200');
+    Kakao.isInitialized();
 
-// const kakaoShare = document.querySelector('.kakao_share');
-// kakaoShare.init('38b66d063cf7a54f727a919e785ee441');
+    function sendLink() {
+        let result_url = window.location.href;
+        Kakao.Link.sendDefault({
+            objectType: 'feed',
+            content: {
+                title: '나의 개발 유형은?',
+                description: '나에게 꼭 맞는 개발 유형을 알아보자!!',
+                imageUrl: 'https://mbit.weniv.co.kr/static/img/mbit_thumbnail.png',
+                link: {
+                    mobileWebUrl: 'https://vbti.herokuapp.com',
+                    webUrl: 'https://vbti.herokuapp.com',
+                },
+            },
+            social: {
+                likeCount: 286,
+                commentCount: 45,
+                sharedCount: 845,
+            },
+            buttons: [{
+                    title: '결과 보러가기',
+                    link: {
+                        webUrl: result_url,
+                        mobileWebUrl: result_url,
+                    },
+                },
+                {
+                    title: '테스트 하러가기',
+                    link: {
+                        webUrl: 'https://vbti.herokuapp.com',
+                        mobileWebUrl: 'https://vbti.herokuapp.com',
+                    },
+                },
+            ],
+        });
+    }
+
+    /////// 카카오 공유 코드 끝 ////////
+
+    /////// 카카오 공유 코드 ////////
+
+    kakaoShare.addEventListener('click', sendLink)
