@@ -28,9 +28,9 @@
         Kakao.Link.sendDefault({
             objectType: 'feed',
             content: {
-                title: '나의 개발 유형은?',
-                description: '나에게 꼭 맞는 개발 유형을 알아보자!!',
-                imageUrl: 'https://mbit.weniv.co.kr/static/img/mbit_thumbnail.png',
+                title: '나의 채소 유형을 알아보자!',
+                description: '나와 가장 어울리는 채소는?',
+                imageUrl: 'https://drive.google.com/uc?id=1AXqxpqp7d_kr0ixFV0Z1aWWGOPttNZk_',
                 link: {
                     mobileWebUrl: 'https://vbti.herokuapp.com',
                     webUrl: 'https://vbti.herokuapp.com',
@@ -42,14 +42,14 @@
                 sharedCount: 845,
             },
             buttons: [{
-                    title: '결과 보러가기',
+                    title: '결과 보기',
                     link: {
                         webUrl: result_url,
                         mobileWebUrl: result_url,
                     },
                 },
                 {
-                    title: '테스트 하러가기',
+                    title: '테스트 하기',
                     link: {
                         webUrl: 'https://vbti.herokuapp.com',
                         mobileWebUrl: 'https://vbti.herokuapp.com',
